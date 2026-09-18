@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Talent Connect - Gestión y outsourcing del talento humano para instituciones educativas.">
+  <title>Talent Connect | Conectamos talento con oportunidades</title>
+  <style>
+    :root{
+      --ink:#111318; --gold:#e7b12b; --gold-dark:#c99514;
+      --cream:#fbfaf6; --white:#fff; --muted:#626873;
+      --line:#e8e8e4; --soft:#f2f0e9; --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--white);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max),92%);margin:auto}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand img{height:58px;width:auto;display:block}
+    .links{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:700}
+    .links a:hover{color:var(--gold-dark)}
+    .menu{display:none;background:none;border:0;font-size:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 21px;border-radius:999px;font-weight:700;border:1px solid var(--ink);transition:.2s}
+    .btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .btn-dark:hover{transform:translateY(-2px)}
+    .btn-gold{background:var(--gold);border-color:var(--gold)}
+    .btn-gold:hover{background:var(--gold-dark)}
+    .hero{background:linear-gradient(135deg,var(--cream) 0%,#fff 60%);padding:86px 0 78px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .eyebrow{font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:var(--gold-dark);margin-bottom:14px}
+    h1{font-size:clamp(46px,6vw,78px);line-height:1.02;margin:0 0 22px;letter-spacing:-3px}
+    .hero p{font-size:19px;color:var(--muted);max-width:680px;margin:0 0 30px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{background:var(--ink);color:#fff;border-radius:30px;padding:38px;box-shadow:0 24px 70px rgba(0,0,0,.15)}
+    .hero-card .mark{font-size:64px;font-family:Georgia,serif;line-height:1;margin-bottom:22px}
+    .hero-card h3{font-size:25px;margin:0 0 10px}
+    .hero-card p{font-size:15px;color:#d8d9dc;margin:0 0 24px}
+    .gold-line{height:5px;background:var(--gold);width:80px;border-radius:10px;margin-bottom:25px}
+    section{padding:86px 0}
+    .section-head{max-width:760px;margin-bottom:44px}
+    .section-head h2{font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 14px;letter-spacing:-1.5px}
+    .section-head p{color:var(--muted);font-size:17px;margin:0}
+    .about{background:var(--white)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+    .values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .value{padding:20px;background:var(--soft);border-radius:18px;font-weight:700}
+    .value span{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:4px}
+    .steps{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+    .step{padding:18px 12px;border:1px solid var(--line);border-radius:18px;background:#fff;text-align:center;font-size:13px;font-weight:700}
+    .step b{display:block;width:30px;height:30px;border-radius:50%;background:var(--gold);margin:0 auto 10px;line-height:30px}
+    .services{background:var(--cream)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{padding:28px;border:1px solid var(--line);border-radius:22px;background:#fff;transition:.2s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(0,0,0,.07)}
+    .icon{font-size:28px;margin-bottom:12px}
+    .card h3{margin:0 0 8px;font-size:20px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .price{margin-top:16px;font-weight:800;color:var(--gold-dark)}
+    .plans{background:#fff}
+    .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+    .plan{border:1px solid var(--line);border-radius:24px;padding:30px}
+    .plan.featured{border:2px solid var(--gold);position:relative}
+    .tag{position:absolute;right:18px;top:18px;background:var(--gold);padding:5px 10px;border-radius:999px;font-size:11px;font-weight:800}
+    .plan h3{margin:0;font-size:22px}
+    .plan .amount{font-size:34px;font-weight:900;margin:12px 0}
+    .plan ul{padding-left:18px;color:var(--muted)}
+    .mini-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .mini{background:var(--soft);border-radius:18px;padding:20px}
+    .mini strong{display:block;font-size:18px}
+    .mini span{color:var(--muted);font-size:13px}
+    .audience{background:var(--ink);color:#fff}
+    .audience .section-head p{color:#c9cbd0}
+    .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .audience-card{border:1px solid #303238;border-radius:22px;padding:28px;background:#17191e}
+    .audience-card h3{margin:0 0 8px;color:var(--gold)}
+    .audience-card p{margin:0;color:#d0d2d7;font-size:14px}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .why{padding:26px;border-radius:20px;background:var(--soft)}
+    .why h3{margin:0 0 6px}
+    .why p{margin:0;color:var(--muted);font-size:14px}
+    .commitments{background:var(--cream)}
+    .commit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .commit{padding:30px;background:#fff;border-radius:24px;border:1px solid var(--line)}
+    .commit h3{font-size:24px;margin:0 0 10px}
+    .commit li{margin:8px 0;color:var(--muted)}
+    .faq details{border-bottom:1px solid var(--line);padding:18px 0}
+    .faq summary{cursor:pointer;font-weight:800}
+    .faq p{color:var(--muted);max-width:800px}
+    .contact{background:var(--gold)}
+    .contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:50px;align-items:start}
+    .contact h2{font-size:clamp(36px,5vw,58px);line-height:1.05;margin:0 0 16px}
+    .contact p{max-width:650px}
+    .contact-box{background:#fff;border-radius:24px;padding:28px}
+    .contact-row{padding:14px 0;border-bottom:1px solid var(--line)}
+    .contact-row:last-child{border:0}
+    .contact-row small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:800;font-size:11px}
+    footer{background:var(--ink);color:#fff;padding:32px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-inner p{margin:0;color:#bfc1c6;font-size:13px}
+    @media(max-width:900px){
+      .links{display:none}.menu{display:block}
+      .hero-grid,.about-grid,.contact-grid,.commit-grid,.why-grid{grid-template-columns:1fr}
+      .cards,.plan-grid,.audience-grid{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:repeat(4,1fr)}
+    }
+    @media(max-width:620px){
+      .nav-inner{height:68px}.brand img{height:52px}
+      section{padding:62px 0}.hero{padding:60px 0}
+      h1{letter-spacing:-2px}.hero p{font-size:17px}
+      .cards,.plan-grid,.mini-prices,.audience-grid,.values{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .hero-card{padding:28px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio"><img src="logo.png" alt="Talent Connect"></a>
+      <nav class="links">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#planes">Planes</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-dark" href="#contacto">Contáctanos</a>
+      </nav>
+      <button class="menu" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Gestión y outsourcing del talento humano</div>
+          <h1>Conectamos talento con oportunidades.</h1>
+          <p>Conectamos instituciones educativas con el talento humano que necesitan para crecer de manera eficiente, responsable y humana.</p>
+          <div class="actions">
+            <a class="btn btn-dark" href="#servicios">Conoce nuestros servicios</a>
+            <a class="btn" href="#contacto">Solicita información</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="gold-line"></div>
+          <div class="mark">TC</div>
+          <h3>Talento humano con propósito</h3>
+          <p>Reclutamiento, selección, contratación, capacitación y seguimiento, con un enfoque especial en el sector educativo.</p>
+          <a class="btn btn-gold" href="#proceso">Ver nuestro proceso</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="nosotros">
+      <div class="container about-grid">
+        <div>
+          <div class="eyebrow">Quiénes somos</div>
+          <div class="section-head">
+            <h2>Personas adecuadas para organizaciones que hacen la diferencia.</h2>
+            <p>Talent Connect facilita la gestión del talento humano de jardines infantiles e instituciones educativas, acompañando las diferentes etapas del proceso.</p>
+          </div>
+          <p>Trabajamos bajo principios de responsabilidad, transparencia, respeto, compromiso, confidencialidad, servicio, calidad y mejora continua.</p>
+        </div>
+        <div class="values">
+          <div class="value">Responsabilidad<span>Procesos organizados y cumplimiento.</span></div>
+          <div class="value">Transparencia<span>Información clara durante el proceso.</span></div>
+          <div class="value">Respeto<span>Valoramos a candidatos, clientes y colaboradores.</span></div>
+          <div class="value">Confidencialidad<span>Protección responsable de la información.</span></div>
+          <div class="value">Servicio<span>Atención cercana y personalizada.</span></div>
+          <div class="value">Calidad<span>Orientación a resultados y mejora continua.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proceso">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nuestra propuesta de valor</div>
+          <h2>Un proceso integral, de principio a fin.</h2>
+          <p>Permitimos que las instituciones se concentren en su actividad principal mientras reciben acompañamiento en la gestión de su talento humano.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><b>1</b>Necesidad</div>
+          <div class="step"><b>2</b>Reclutamiento</div>
+          <div class="step"><b>3</b>Selección</div>
+          <div class="step"><b>4</b>Evaluación</div>
+          <div class="step"><b>5</b>Contratación</div>
+          <div class="step"><b>6</b>Inducción</div>
+          <div class="step"><b>7</b>Seguimiento</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nuestros servicios</div>
+          <h2>Soluciones para cada etapa del talento.</h2>
+          <p>Servicios adaptados a las necesidades de cada institución y organización.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="icon">◎</div><h3>Reclutamiento</h3><p>Identificación y atracción de candidatos de acuerdo con el perfil solicitado.</p></article>
+          <article class="card"><div class="icon">◌</div><h3>Selección de personal</h3><p>Revisión de hojas de vida, preselección, entrevistas, evaluación y presentación de candidatos.</p></article>
+          <article class="card"><div class="icon">✓</div><h3>Evaluación psicotécnica</h3><p>Evaluaciones orientadas a obtener información adicional de los candidatos.</p><div class="price">$180.000 por candidato</div></article>
+          <article class="card"><div class="icon">⌕</div><h3>Estudio de seguridad</h3><p>Verificación de información como parte del proceso de selección.</p><div class="price">$150.000</div></article>
+          <article class="card"><div class="icon">↗</div><h3>Contratación</h3><p>Acompañamiento en la vinculación del talento seleccionado.</p></article>
+          <article class="card"><div class="icon">→</div><h3>Inducción</h3><p>Orientación sobre institución, cargo, funciones, normas, cultura y procedimientos.</p></article>
+          <article class="card"><div class="icon">✦</div><h3>Capacitación</h3><p>Diseño y desarrollo de capacitaciones según las necesidades de la organización.</p><div class="price">Desde $600.000</div></article>
+          <article class="card"><div class="icon">∞</div><h3>Outsourcing integral</h3><p>Acompañamiento en reclutamiento, selección, evaluación, contratación, inducción y seguimiento.</p><div class="price">Desde $2.500.000/mes</div></article>
+          <article class="card"><div class="icon">↻</div><h3>Seguimiento</h3><p>Retroalimentación y acompañamiento posterior para fortalecer el proceso.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans" id="planes">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Portafolio</div>
+          <h2>Planes de referencia.</h2>
+          <p>Opciones de acompañamiento para diferentes necesidades de gestión del talento humano.</p>
+        </div>
+        <div class="plan-grid">
+          <article class="plan"><h3>Básico</h3><div class="amount">$450.000</div><p>Solución de entrada para necesidades puntuales.</p><ul><li>Atención personalizada</li><li>Selección de candidatos</li><li>Acompañamiento</li></ul></article>
+          <article class="plan featured"><span class="tag">Plan integral</span><h3>Estándar</h3><div class="amount">$850.000</div><p>Mayor acompañamiento para procesos de selección y gestión.</p><ul><li>Atención personalizada</li><li>Informes</li><li>Seguimiento</li></ul></article>
+          <article class="plan"><h3>Premium</h3><div class="amount">$1.200.000</div><p>Acompañamiento ampliado para necesidades de talento.</p><ul><li>Selección</li><li>Seguimiento</li><li>Orientación durante el proceso</li></ul></article>
+        </div>
+        <div class="mini-prices">
+          <div class="mini"><strong>$180.000</strong><span>Evaluación psicotécnica por candidato</span></div>
+          <div class="mini"><strong>$150.000</strong><span>Estudio de seguridad</span></div>
+          <div class="mini"><strong>Desde $2.500.000/mes</strong><span>Outsourcing integral de talento humano</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nuestro enfoque</div>
+          <h2>Conocemos las necesidades del sector educativo.</h2>
+          <p>El proyecto inicia con un enfoque especial en jardines infantiles y educación básica, con proyección hacia otros niveles.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card"><h3>Jardines infantiles</h3><p>Apoyo en la búsqueda y selección del personal necesario para educación y cuidado infantil.</p></article>
+          <article class="audience-card"><h3>Educación básica</h3><p>Procesos relacionados con docentes y otros perfiles requeridos por las instituciones.</p></article>
+          <article class="audience-card"><h3>Sector educativo en expansión</h3><p>Proyección hacia bachillerato, otros niveles e instituciones relacionadas con educación.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">¿Por qué Talent Connect?</div>
+          <h2>Una relación basada en confianza y acompañamiento.</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why"><h3>Atención personalizada</h3><p>Cada institución tiene necesidades diferentes.</p></div>
+          <div class="why"><h3>Soluciones integrales</h3><p>Acompañamos diferentes etapas de la gestión del talento.</p></div>
+          <div class="why"><h3>Enfoque educativo</h3><p>Orientación hacia las necesidades particulares del sector.</p></div>
+          <div class="why"><h3>Seguimiento</h3><p>Nuestro trabajo continúa después de la presentación del candidato.</p></div>
+          <div class="why"><h3>Responsabilidad</h3><p>Promovemos procesos organizados y transparentes.</p></div>
+          <div class="why"><h3>Proyección</h3><p>Ampliamos nuestras soluciones junto con las necesidades de nuestros clientes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="commitments">
+      <div class="container commit-grid">
+        <article class="commit">
+          <div class="eyebrow">Compromiso ambiental</div>
+          <h3>Procesos más responsables.</h3>
+          <ul><li>Uso de documentos digitales.</li><li>Firma electrónica y reducción del papel.</li><li>Materiales de capacitación digitales.</li><li>Separación y reciclaje de residuos.</li><li>Manejo adecuado de residuos electrónicos.</li><li>Control del consumo de agua.</li></ul>
+        </article>
+        <article class="commit">
+          <div class="eyebrow">Compromiso social</div>
+          <h3>Talento que también transforma comunidades.</h3>
+          <p>Talent Connect plantea destinar parte de sus resultados al apoyo de jardines infantiles, contribuyendo al fortalecimiento de espacios educativos y al desarrollo de las comunidades.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Preguntas frecuentes</div>
+          <h2>Lo que nuestros clientes quieren saber.</h2>
+        </div>
+        <details><summary>¿Qué hace Talent Connect?</summary><p>Prestamos servicios de gestión y outsourcing del talento humano, especialmente para el sector educativo.</p></details>
+        <details><summary>¿Trabajan con jardines infantiles?</summary><p>Sí. Los jardines infantiles hacen parte del enfoque inicial de Talent Connect.</p></details>
+        <details><summary>¿Solo trabajan con jardines?</summary><p>No. La empresa tiene proyectada su expansión hacia otros niveles educativos y organizaciones relacionadas con educación.</p></details>
+        <details><summary>¿Qué servicios ofrecen?</summary><p>Reclutamiento, selección, evaluación, contratación, inducción, capacitación, seguimiento y outsourcing integral.</p></details>
+        <details><summary>¿Realizan evaluaciones psicotécnicas?</summary><p>Sí, dentro de los servicios disponibles.</p></details>
+        <details><summary>¿Ofrecen capacitación?</summary><p>Sí. Se desarrollan capacitaciones de acuerdo con las necesidades de la organización.</p></details>
+        <details><summary>¿Realizan outsourcing?</summary><p>Sí. Talent Connect ofrece una modalidad de outsourcing integral de talento humano.</p></details>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="container contact-grid">
+        <div>
+          <div class="eyebrow">Hablemos</div>
+          <h2>Conectemos tu institución con el talento que necesita.</h2>
+          <p>Cuéntanos qué necesitas y te orientaremos sobre la solución más adecuada.</p>
+          <a class="btn btn-dark" href="mailto:talent.connects.a.s@gmail.com?subject=Solicitud%20de%20información%20-%20Talent%20Connect">Solicitar información</a>
+        </div>
+        <div class="contact-box">
+          <div class="contact-row"><small>Empresa</small><strong>Talent Connect</strong></div>
+          <div class="contact-row"><small>Ubicación</small><strong>Bogotá, Colombia</strong></div>
+          <div class="contact-row"><small>Correo</small><strong><a href="mailto:talent.connects.a.s@gmail.com">talent.connects.a.s@gmail.com</a></strong></div>
+          <div class="contact-row"><small>Teléfono / WhatsApp</small><strong>Por definir</strong></div>
+          <div class="contact-row"><small>Redes sociales</small><strong>Por definir</strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© 2026 Talent Connect. Conectamos talento con oportunidades.</p>
+      <p>Gestión y outsourcing del talento humano.</p>
+    </div>
+  </footer>
+</body>
+</html>
